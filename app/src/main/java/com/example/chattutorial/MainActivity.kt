@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.bindView(findViewById(R.id.channelsView), this)
         binding.channelsView.setOnChannelClickListener { channel ->
             // TODO: Start Channel activity
+            startActivity(ChannelActivity.newIntent(this, channel))
         }
     }
 }
