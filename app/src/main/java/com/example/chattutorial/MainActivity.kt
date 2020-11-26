@@ -25,28 +25,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Step 1 - Set up the client for API calls, the domain for offline storage and the UI components
+        //gzuh3rrrsr7q
         val client =
-                ChatClient.Builder("b67pax5b2wdq", applicationContext).logLevel(ChatLogLevel.ALL)
-                        .build()
+            ChatClient.Builder("gzuh3rrrsr7q", applicationContext).logLevel(ChatLogLevel.ALL)
+                .build()
         val domain = ChatDomain.Builder(client, applicationContext).build()
-        ChatUI.Builder(client, domain, applicationContext).build()
+        ChatUI.Builder(applicationContext).build()
 
         // Step 2 - Authenticate and connect the user
-        val user = User("summer-brook-2").apply {
-            extraData["name"] = "Paranoid Android"
+        val user = User("idchdsz123").apply {
+            extraData["name"] = "chdsz123"
             extraData["image"] = "https://bit.ly/2TIt8NR"
         }
         client.setUser(
-                user = user,
-                token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic3VtbWVyLWJyb29rLTIifQ.CzyOx8kgrc61qVbzWvhV1WD3KPEo5ZFZH-326hIdKz0"
+            user = user,
+            token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiaWRjaGRzejEyMyJ9.kK81KN2mRL2KD-8_tXFNUVYaZ9fL0MUqvWHOW4rTXZU="
         )
+        //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiaWRjaGRzejEyMyJ9.kK81KN2mRL2KD-8_tXFNUVYaZ9fL0MUqvWHOW4rTXZU=
 
         // Step 3 - Set the channel list filter and order
         // This can be read as requiring only channels whose "type" is "messaging" AND
         // whose "members" include our "user.id"
         val filter = Filters.and(
-                Filters.eq("type", "messaging"),
-                Filters.`in`("members", listOf(user.id))
+            Filters.eq("type", "mobile"),
+            //Filters.`in`("members", listOf(user.id))
         )
         val viewModelFactory = ChannelsViewModelFactory(filter, ChannelsViewModel.DEFAULT_SORT)
         val viewModel: ChannelsViewModel by viewModels { viewModelFactory }
@@ -55,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.bindView(findViewById(R.id.channelsView), this)
         binding.channelsView.setOnChannelClickListener { channel ->
             // TODO: Start Channel activity
-            startActivity(ChannelActivity.newIntent(this, channel))
         }
     }
 }
