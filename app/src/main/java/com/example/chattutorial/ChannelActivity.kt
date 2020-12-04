@@ -38,7 +38,7 @@ class ChannelActivity : AppCompatActivity() {
         val messageListViewModel: MessageListViewModel by viewModels { factory }
         val messageInputViewModel: MessageInputViewModel by viewModels { factory }
 
-        //TODO set custom AttachmentViewHolderFactory
+        // TODO set custom AttachmentViewHolderFactory
 
         // Step 2 - Bind the view and ViewModels, they are loosely coupled so it's easy to customize
         channelHeaderViewModel.bindView(binding.channelHeaderView, this)
@@ -72,6 +72,7 @@ class ChannelActivity : AppCompatActivity() {
         }
         onBackPressedDispatcher.addCallback(this) {
             binding.channelHeaderView.onBackClick()
+
         }
     }
 

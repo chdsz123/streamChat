@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // Step 1 - Set up the client for API calls, the domain for offline storage and the UI components
         //gzuh3rrrsr7q
         val client =
-            ChatClient.Builder("gzuh3rrrsr7q", applicationContext).logLevel(ChatLogLevel.ALL)
+            ChatClient.Builder("7frq34jz6kbg", applicationContext).logLevel(ChatLogLevel.ALL)
                 .build()
         val domain = ChatDomain.Builder(client, applicationContext).build()
         ChatUI.Builder(applicationContext).build()
@@ -35,11 +35,12 @@ class MainActivity : AppCompatActivity() {
         // Step 2 - Authenticate and connect the user
         val user = User("idchdsz123").apply {
             extraData["name"] = "chdsz123"
-            extraData["image"] = "https://bit.ly/2TIt8NR"
+            extraData["image"] = "https://i.pinimg.com/236x/c8/45/d8/c845d809f5873ed29d82511e9c342ba2--film-anime-manga-anime.jpg"
         }
+
         client.setUser(
             user = user,
-            token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiaWRjaGRzejEyMyJ9.kK81KN2mRL2KD-8_tXFNUVYaZ9fL0MUqvWHOW4rTXZU="
+            token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiaWRjaGRzejEyMyJ9.kca73eq1W6MKUQgnc1Q1UCtNUZ5cHRdkw64xcX-1BkI="
         )
         //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiaWRjaGRzejEyMyJ9.kK81KN2mRL2KD-8_tXFNUVYaZ9fL0MUqvWHOW4rTXZU=
 
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         // whose "members" include our "user.id"
         val filter = Filters.and(
             Filters.eq("type", "mobile"),
-            //Filters.`in`("members", listOf(user.id))
+//            Filters.`in`("members", listOf(user.id))
         )
         val viewModelFactory = ChannelsViewModelFactory(filter, ChannelsViewModel.DEFAULT_SORT)
         val viewModel: ChannelsViewModel by viewModels { viewModelFactory }
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         // Step 4 - Connect the ChannelsViewModel to the ChannelsView, loose coupling makes it easy to customize
         viewModel.bindView(findViewById(R.id.channelsView), this)
         binding.channelsView.setOnChannelClickListener { channel ->
-            // TODO: Start Channel activity
+            startActivity(ChannelActivity.newIntent(this, channel))
         }
     }
 }

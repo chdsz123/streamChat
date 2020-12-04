@@ -21,7 +21,14 @@
         app:layout_constraintBottom_toTopOf="@+id/messageInputView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/channelHeaderView" />
+        app:layout_constraintTop_toBottomOf="@+id/channelHeaderView"
+        app:streamMessageTextColorMine="#F0EFEF"
+        app:streamMessageBackgroundColorMine="#009EDD"
+        app:streamMessageBorderColorMine="@color/cardview_shadow_end_color"
+        app:streamMessageBackgroundColorTheirs="#1F1F1F"
+        app:streamMessageTextColorTheirs="#F0EFEF"
+        app:streamMessageBorderColorTheirs="@color/cardview_shadow_end_color"
+        />
 
     <com.getstream.sdk.chat.view.messageinput.MessageInputView
         android:id="@+id/messageInputView"
